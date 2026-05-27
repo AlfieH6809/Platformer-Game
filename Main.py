@@ -31,11 +31,16 @@ player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
 player_image = pygame.transform.scale(player_image, (player_width, player_height)) # Adjusting Size
 
 
+
 pygame.init()
 screen = pygame.display.set_mode((game_width, game_height))
 pygame.display.set_caption("Programming Assignment") # Window Title
 pygame.display.set_icon(player_image)
 clock = pygame.time.Clock() # Frame Rate
+
+# Load BGM
+pygame.mixer.music.load('Assets/Sounds/BGM2.mp3')
+pygame.mixer.music.play(-1, 0.0) # Loop Permanently, Start Track from Beginning
 
 class Player(pygame.Rect):
     def __init(self):

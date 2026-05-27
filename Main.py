@@ -12,7 +12,7 @@ pygame.display.set_caption("Programming Assignment") # Window Title
 clock = pygame.time.Clock() # Frame Rate
 
 #left (x), top(y), width, height
-player = pygame.Rect(150, 150, 50, 50)
+player = pygame.Rect(250, 250, 50, 50)
 
 def draw():
     screen.fill("Blue")
@@ -20,9 +20,17 @@ def draw():
 
 while True:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: #user closes Pygame
+        if event.type == pygame.QUIT: #user closes pygame
             pygame.quit()
             sys.exit()
+
+    #KEYDOWN = Key pressed, KeyUP = Key pressed or released
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP or event.key == pygame.K_w: #Moving Up with Up Arrow or W
+            player.y -= 5
+
+
+
 
         draw()
         pygame.display.update()

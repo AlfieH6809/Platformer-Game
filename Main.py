@@ -72,10 +72,15 @@ while True:
     #         player.x -= 5
 
     keys = pygame.key.get_pressed() # Movement - Moving Up, Down, Left and Right
-    if (keys[pygame.K_UP or pygame.K_w]) and player.y - Player_Speed >= 0:
+    if keys[pygame.K_UP or pygame.K_w]:
         player.y -= Player_Speed
-    if (keys[pygame.K_DOWN or pygame.K_s]) and player.y + player.height + Player_Speed <= game_height:
+        if player.y < 0:
+            player.y = 0
+            player.y += Player_Speed
+    if keys[pygame.K_DOWN or pygame.K_s]:
         player.y += Player_Speed
+        if player.y + player.height > game_height:
+            player.y = game_height - player.height
     if keys[pygame.K_RIGHT or pygame.K_d]:
         player.x += Player_Speed
     if keys[pygame.K_LEFT or pygame.K_a]:

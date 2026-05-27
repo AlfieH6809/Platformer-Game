@@ -2,22 +2,33 @@
 
 import pygame, sys
 
-# Variables for Screen Height + Width
+# Variables - Screen Width/Height, Player Variables
 game_width = 512 #Screen Width
 game_height = 512 # Screen Height
+Player_X = game_width / 2
+Player_Y = game_height / 2
+Player_Width = 42
+Player_Height = 48
 
-# Images
+# Image Assets
 background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
 background_image2 = pygame.image.load("Assets/Background Images/parallax-mountain-montain-far.png")
 background_image3 = pygame.image.load("Assets/Background Images/parallax-mountain-mountains.png")
 background_image4 = pygame.image.load("Assets/Background Images/parallax-mountain-foreground-trees.png")
 background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
-player_image = pygame.image.load("Assets/")
+player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
+player = pygame.Rect(150, 150, 50, 50)
 
 pygame.init()
 screen = pygame.display.set_mode((game_width, game_height))
 pygame.display.set_caption("Programming Assignment") # Window Title
 clock = pygame.time.Clock() # Frame Rate
+
+class Player(pygame.Rect):
+    def __init__(self):
+        pygame.rect.__init__(self)
+        self.image = player_image
+
 
 #left (x), top(y), width, height
 player = pygame.Rect(150, 150, 50, 50)
@@ -25,7 +36,7 @@ player = pygame.Rect(150, 150, 50, 50)
 def draw():
     screen.fill("Blue")
     screen.blit(background_image, (0, 0))
-    pygame.draw.rect(screen,(2, 239, 238), player)
+    screen.blit(player_image, (player.x, player.y))
 
 while True:
     for event in pygame.event.get():

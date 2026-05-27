@@ -11,8 +11,12 @@ screen = pygame.display.set_mode((game_width, game_height))
 pygame.display.set_caption("Programming Assignment") # Window Title
 clock = pygame.time.Clock() # Frame Rate
 
+#left (x), top(y), width, height
+player = pygame.Rect(150, 150, 50, 50)
+
 def draw():
     screen.fill("Blue")
+    pygame.draw.rect(screen,(2, 239, 238), player)
 
 while True:
     for event in pygame.event.get():

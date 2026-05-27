@@ -79,9 +79,9 @@ while True:
         player.y += Player_Speed
         player.y = min(player.y + Player_Speed, game_height - Player_Height)
     if keys[pygame.K_RIGHT or pygame.K_d]:
-        player.x += Player_Speed
+        player.x = min(player.x + Player_Speed, game_width - Player_Width)
     if keys[pygame.K_LEFT or pygame.K_a]:
-        player.x -= Player_Speed
+        player.x = max(player.x - Player_Speed, 0)
 
 
     draw()

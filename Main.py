@@ -11,6 +11,7 @@ Player_X = game_width / 2
 Player_Y = game_height / 2
 Player_Width = 42
 Player_Height = 48
+Player_Speed = 5
 
 
 # Image Assets
@@ -71,14 +72,14 @@ while True:
     #         player.x -= 5
 
     keys = pygame.key.get_pressed() # Movement - Moving Up, Down, Left and Right
-    if keys[pygame.K_UP or pygame.K_w]:
-        player.y -= 5
-    if keys[pygame.K_DOWN or pygame.K_s]:
-        player.y += 5
+    if (keys[pygame.K_UP or pygame.K_w]) and player.y - Player_Speed >= 0:
+        player.y -= Player_Speed
+    if (keys[pygame.K_DOWN or pygame.K_s]) and player.y + player.height + Player_Speed <= game_height:
+        player.y += Player_Speed
     if keys[pygame.K_RIGHT or pygame.K_d]:
-        player.x += 5
+        player.x += Player_Speed
     if keys[pygame.K_LEFT or pygame.K_a]:
-        player.x -= 5
+        player.x -= Player_Speed
 
 
     draw()

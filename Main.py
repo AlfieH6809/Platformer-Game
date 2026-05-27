@@ -14,6 +14,8 @@ player_height = 48
 Player_Speed = 5
 Gravity = 0.5
 Player_Velocity_Y = -10
+FLOOR_Y = game_height * 3/4
+
 
 
 # Image Assets
@@ -48,6 +50,11 @@ player = Player()
 def move():
     player.velocity_y += Gravity
     player.y += player.velocity_y
+
+    if player.y + player.height > FLOOR_Y:
+        player.y = FLOOR_Y - player.height
+
+
 
 def draw():
     # screen.fill("Blue")

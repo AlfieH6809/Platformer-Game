@@ -41,6 +41,7 @@ clock = pygame.time.Clock() # Frame Rate
 # Load BGM
 pygame.mixer.music.load('Assets/Sounds/BGM2.mp3')
 pygame.mixer.music.play(-1, 0.0) # Loop Permanently, Start Track from Beginning
+pygame.mixer.music.set_volume(0.2) # Set to an Appropriate Volume
 
 class Player(pygame.Rect):
     def __init(self):

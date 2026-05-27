@@ -7,11 +7,12 @@ game_width = 640 #Screen Width
 game_height = 360 # Screen Height
 BG_Width = game_width
 BG_Height = game_height
-Player_X = game_width / 2
-Player_Y = game_height / 2
-Player_Width = 42
-Player_Height = 48
+player_X = game_width / 2
+player_Y = game_height / 2
+player_width = 42
+player_height = 48
 Player_Speed = 5
+Gravity = 0.5
 Player_Velocity_Y = -10
 
 
@@ -27,8 +28,7 @@ background_image4 = pygame.transform.scale(background_image4, (BG_Width, BG_Heig
 background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
 background_image5 = pygame.transform.scale(background_image5, (BG_Width, BG_Height)) #Adjusting BG Size
 player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
-player_image = pygame.transform.scale(player_image, (Player_Width, Player_Height)) # Adjusting Size
-
+player_image = pygame.transform.scale(player_image, (player_width, player_height)) # Adjusting Size
 
 
 pygame.init()
@@ -38,14 +38,16 @@ pygame.display.set_icon(player_image)
 clock = pygame.time.Clock() # Frame Rate
 
 class Player(pygame.Rect):
-    def __init__(self):
-        pygame.rect.__init__(self)
+    def __init(self):
+        pygame.Rect.__init__(self, player_X, player_Y, player_width, player_height)
         self.image = player_image
         self.velocity_y = 0
 
+player = Player()
 
-#left (x), top(y), width, height
-player = pygame.Rect(150, 150, 50, 50)
+def move():
+    player.velocity_y += Gravity
+    player.y += player.velocity_y
 
 def draw():
     # screen.fill("Blue")
@@ -54,7 +56,7 @@ def draw():
     screen.blit(background_image3, (0, 0))
     screen.blit(background_image4, (0, 0))
     screen.blit(background_image5, (0, 0))
-    screen.blit(player_image, (player.x, player.y))
+    screen.blit(player_image, player)
 
 while True:
     for event in pygame.event.get():
@@ -77,11 +79,12 @@ while True:
     if keys[pygame.K_UP or pygame.K_w]:
        player.velocity_y = Player_Velocity_Y
     if keys[pygame.K_RIGHT or pygame.K_d]:
-        player.x = min(player.x + Player_Speed, game_width - Player_Width)
+        player.x = min(player.x + Player_Speed, game_width - player_width)
     if keys[pygame.K_LEFT or pygame.K_a]:
         player.x = max(player.x - Player_Speed, 0)
 
 
+    move()
     draw()
     pygame.display.update()
     clock.tick(60) #Run the game at 60FPS - Updates the screen at a rate of 60 frames per second

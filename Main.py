@@ -12,9 +12,7 @@ player_Y = game_height / 2
 player_width = 42
 player_height = 48
 Player_Speed = 5
-Gravity = 0.5
-Player_Velocity_Y = -10
-FLOOR_Y = game_height * 3/4
+
 
 
 
@@ -43,16 +41,9 @@ class Player(pygame.Rect):
     def __init(self):
         pygame.Rect.__init__(self, player_X, player_Y, player_width, player_height)
         self.image = player_image
-        self.velocity_y = 0
+
 
 player = Player()
-
-def move():
-    player.velocity_y += Gravity
-    player.y += player.velocity_y
-
-    if player.y + player.height > FLOOR_Y:
-        player.y = FLOOR_Y - player.height
 
 
 
@@ -84,14 +75,16 @@ while True:
 
     keys = pygame.key.get_pressed() # Movement Inputs + Game Screen Boundaries
     if keys[pygame.K_UP or pygame.K_w]:
-       player.velocity_y = Player_Velocity_Y
+        player.y = max(player.y - Player_Speed, 0)
+    if keys[pygame.K_DOWN or pygame.K_s]:
+        player.y = min(player.y + Player_Speed, game_height - player_height)
     if keys[pygame.K_RIGHT or pygame.K_d]:
         player.x = min(player.x + Player_Speed, game_width - player_width)
     if keys[pygame.K_LEFT or pygame.K_a]:
         player.x = max(player.x - Player_Speed, 0)
 
 
-    move()
+
     draw()
     pygame.display.update()
     clock.tick(60) #Run the game at 60FPS - Updates the screen at a rate of 60 frames per second

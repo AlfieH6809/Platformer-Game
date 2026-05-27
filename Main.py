@@ -38,10 +38,17 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_UP or pygame.K_w]:
         player.y -= 5
+    if keys[pygame.K_DOWN or pygame.K_s]:
+        player.y += 5
+    if keys[pygame.K_RIGHT or pygame.K_d]:
+        player.x += 5
+    if keys[pygame.K_LEFT or pygame.K_a]:
+        player.x -= 5
 
-        draw()
-        pygame.display.update()
-        clock.tick(60) #Run the game at 60FPS - Updates the screen at a rate of 60 frames per second
+
+    draw()
+    pygame.display.update()
+    clock.tick(60) #Run the game at 60FPS - Updates the screen at a rate of 60 frames per second
 
 
 

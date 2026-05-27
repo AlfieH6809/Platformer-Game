@@ -17,7 +17,9 @@ background_image3 = pygame.image.load("Assets/Background Images/parallax-mountai
 background_image4 = pygame.image.load("Assets/Background Images/parallax-mountain-foreground-trees.png")
 background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
 player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
-player = pygame.Rect(150, 150, 50, 50)
+player_image = pygame.transform.scale(player_image, (Player_Width, Player_Height))
+
+
 
 pygame.init()
 screen = pygame.display.set_mode((game_width, game_height))

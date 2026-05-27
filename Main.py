@@ -26,11 +26,14 @@ while True:
 
     #KEYDOWN = Key pressed, KeyUP = Key pressed or released
     if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_UP or event.key == pygame.K_w: #Moving Up with Up Arrow or W
+        if event.key in (pygame.K_UP, event.key == pygame.K_w): #Moving Up with Up Arrow or W
             player.y -= 5
-
-
-
+        if event.key in (pygame.K_DOWN, event.key == pygame.K_s): #Moving Up with Down Arrow or S
+            player.y += 5
+        if event.key in (pygame.K_RIGHT, event.key == pygame.K_d): #Moving Up with Right Arrow or D
+            player.x += 5
+        if event.key in (pygame.K_LEFT, event.key == pygame.K_a): #Moving Up with Left Arrow or a
+            player.x -= 5
 
         draw()
         pygame.display.update()

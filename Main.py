@@ -3,27 +3,32 @@
 import pygame, sys
 
 # Variables - Screen Width/Height, Player Variables
-game_width = 512 #Screen Width
-game_height = 512 # Screen Height
+game_width = 640 #Screen Width
+game_height = 360 # Screen Height
+BG_Width = game_width
+BG_Height = game_height
 Player_X = game_width / 2
 Player_Y = game_height / 2
 Player_Width = 42
 Player_Height = 48
 
+
 # Image Assets
 background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
+background_image = pygame.transform.scale(background_image, (BG_Width, BG_Height)) #Adjusting BG Size
 background_image2 = pygame.image.load("Assets/Background Images/parallax-mountain-montain-far.png")
 background_image3 = pygame.image.load("Assets/Background Images/parallax-mountain-mountains.png")
 background_image4 = pygame.image.load("Assets/Background Images/parallax-mountain-foreground-trees.png")
 background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
 player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
-player_image = pygame.transform.scale(player_image, (Player_Width, Player_Height))
+player_image = pygame.transform.scale(player_image, (Player_Width, Player_Height)) # Adjusting Size
 
 
 
 pygame.init()
 screen = pygame.display.set_mode((game_width, game_height))
 pygame.display.set_caption("Programming Assignment") # Window Title
+pygame.display.set_icon(player_image)
 clock = pygame.time.Clock() # Frame Rate
 
 class Player(pygame.Rect):

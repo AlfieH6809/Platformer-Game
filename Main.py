@@ -3,8 +3,12 @@
 import pygame, sys
 
 # Variables for Screen Height + Width
-game_width = 1080 #Screen Width
-game_height = 960 # Screen Height
+game_width = 512 #Screen Width
+game_height = 512 # Screen Height
+
+# Images
+background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
+background_image2 = pygame.image.load("Assets/Background Images/")
 
 pygame.init()
 screen = pygame.display.set_mode((game_width, game_height))
@@ -12,10 +16,11 @@ pygame.display.set_caption("Programming Assignment") # Window Title
 clock = pygame.time.Clock() # Frame Rate
 
 #left (x), top(y), width, height
-player = pygame.Rect(250, 250, 50, 50)
+player = pygame.Rect(150, 150, 50, 50)
 
 def draw():
     screen.fill("Blue")
+    screen.blit(background_image, (0, 0))
     pygame.draw.rect(screen,(2, 239, 238), player)
 
 while True:
@@ -35,7 +40,7 @@ while True:
     #     if event.key in (pygame.K_LEFT, event.key == pygame.K_a): #Moving Up with Left Arrow or a
     #         player.x -= 5
 
-    keys = pygame.key.get_pressed()
+    keys = pygame.key.get_pressed() # Movement - Moving Up, Down, Left and Right
     if keys[pygame.K_UP or pygame.K_w]:
         player.y -= 5
     if keys[pygame.K_DOWN or pygame.K_s]:

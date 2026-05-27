@@ -12,6 +12,7 @@ Player_Y = game_height / 2
 Player_Width = 42
 Player_Height = 48
 Player_Speed = 5
+Player_Velocity_Y = -10
 
 
 # Image Assets
@@ -40,6 +41,7 @@ class Player(pygame.Rect):
     def __init__(self):
         pygame.rect.__init__(self)
         self.image = player_image
+        self.velocity_y = 0
 
 
 #left (x), top(y), width, height
@@ -71,13 +73,9 @@ while True:
     #     if event.key in (pygame.K_LEFT, event.key == pygame.K_a): #Moving Up with Left Arrow or a
     #         player.x -= 5
 
-    keys = pygame.key.get_pressed() # Movement - Moving Up, Down, Left and Right
+    keys = pygame.key.get_pressed() # Movement Inputs + Game Screen Boundaries
     if keys[pygame.K_UP or pygame.K_w]:
-        player.y -= Player_Speed
-        player.y = max(player.y - Player_Speed, 0)
-    if keys[pygame.K_DOWN or pygame.K_s]:
-        player.y += Player_Speed
-        player.y = min(player.y + Player_Speed, game_height - Player_Height)
+       player.velocity_y = Player_Velocity_Y
     if keys[pygame.K_RIGHT or pygame.K_d]:
         player.x = min(player.x + Player_Speed, game_width - Player_Width)
     if keys[pygame.K_LEFT or pygame.K_a]:

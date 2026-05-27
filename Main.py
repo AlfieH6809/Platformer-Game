@@ -8,7 +8,11 @@ game_height = 512 # Screen Height
 
 # Images
 background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
-background_image2 = pygame.image.load("Assets/Background Images/")
+background_image2 = pygame.image.load("Assets/Background Images/parallax-mountain-montain-far.png")
+background_image3 = pygame.image.load("Assets/Background Images/parallax-mountain-mountains.png")
+background_image4 = pygame.image.load("Assets/Background Images/parallax-mountain-foreground-trees.png")
+background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
+player_image = pygame.image.load("Assets/")
 
 pygame.init()
 screen = pygame.display.set_mode((game_width, game_height))

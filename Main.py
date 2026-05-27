@@ -17,6 +17,7 @@ Player_Height = 48
 background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
 background_image = pygame.transform.scale(background_image, (BG_Width, BG_Height)) #Adjusting BG Size
 background_image2 = pygame.image.load("Assets/Background Images/parallax-mountain-montain-far.png")
+background_image2 = pygame.transform.scale(background_image2, (BG_Width, BG_Height)) #Adjusting BG Size
 background_image3 = pygame.image.load("Assets/Background Images/parallax-mountain-mountains.png")
 background_image4 = pygame.image.load("Assets/Background Images/parallax-mountain-foreground-trees.png")
 background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
@@ -41,8 +42,9 @@ class Player(pygame.Rect):
 player = pygame.Rect(150, 150, 50, 50)
 
 def draw():
-    screen.fill("Blue")
+    # screen.fill("Blue")
     screen.blit(background_image, (0, 0))
+    screen.blit(background_image2, (0, 0))
     screen.blit(player_image, (player.x, player.y))
 
 while True:

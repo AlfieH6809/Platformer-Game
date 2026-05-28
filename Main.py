@@ -84,6 +84,11 @@ def draw():
     screen.blit(player_image, player)
     screen.blit(ghost_image, (GhostX, GhostY))
 
+def shot(FireballX, FireballY):
+    global fireball_state
+    fireball_state = "fired"
+    screen.blit(fireball_image, (FireballX, FireballY))
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: #user closes pygame
@@ -110,6 +115,11 @@ while True:
         player.x = min(player.x + Player_Speed, game_width - player_width)
     if keys[pygame.K_LEFT or pygame.K_a]:
         player.x = max(player.x - Player_Speed, 0)
+    if keys[pygame.K_SPACE]:
+        if fireball_state == "loaded":
+            FireballX = player_X
+            # Shoot Fireball
+
 
 # Enemy/Ghost Movement
     GhostX += change_in_x_position_enemy

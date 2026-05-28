@@ -21,6 +21,13 @@ GhostX = random.randint(64, 576)
 GhostY = random.randint(64, 296)
 change_in_x_position_enemy = 0.4
 
+# Fireball Variables
+Fireball_Width = 24
+Fireball_Height = 20
+FireballY = game_height / 2
+FireballX = game_width / 2
+fireball_state = "loaded"
+change_in_x_position_fireball = 4
 
 # Load Background Assets
 background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
@@ -40,7 +47,7 @@ player_image = pygame.transform.scale(player_image, (player_width, player_height
 ghost_image = pygame.image.load("Assets//Enemy Sprites/ghost.png")
 ghost_image = pygame.transform.scale(ghost_image, (GHOST_WIDTH, GHOST_HEIGHT))
 # Load Fireball Image
-
+fireball_image = pygame.image.load("Assets/Character Sprites/fireball.png")
 
 
 pygame.init()

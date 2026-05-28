@@ -20,6 +20,11 @@ GHOST_SPEED = 5
 GhostX = random.randint(64, 576)
 GhostY = random.randint(64, 296)
 change_in_x_position_enemy = 0.4
+number_of_ghosts = 4
+
+for i in range(number_of_ghosts):
+    
+
 
 # Fireball Variables
 Fireball_Width = 24
@@ -48,6 +53,7 @@ ghost_image = pygame.image.load("Assets//Enemy Sprites/ghost.png")
 ghost_image = pygame.transform.scale(ghost_image, (GHOST_WIDTH, GHOST_HEIGHT))
 # Load Fireball Image
 fireball_image = pygame.image.load("Assets/Character Sprite/fireball.png")
+
 
 
 pygame.init()
@@ -115,12 +121,19 @@ while True:
         player.x = min(player.x + Player_Speed, game_width - player_width)
     if keys[pygame.K_LEFT or pygame.K_a]:
         player.x = max(player.x - Player_Speed, 0)
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_KP_ENTER]:
         if fireball_state == "loaded":
             FireballX = player_X
             # Shoot Fireball
             shot(FireballX, FireballY)
 
+    if FireballY <= 0:
+        FireballY = game_height / 2
+        fireball_state = "loaded"
+
+    if fireball_state == "fired":
+        shot(FireballX, FireballY)
+        FireballY -= change_in_x_position_fireball
 
 # Enemy/Ghost Movement
     GhostX += change_in_x_position_enemy

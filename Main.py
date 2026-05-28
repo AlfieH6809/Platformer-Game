@@ -47,7 +47,7 @@ player_image = pygame.transform.scale(player_image, (player_width, player_height
 ghost_image = pygame.image.load("Assets//Enemy Sprites/ghost.png")
 ghost_image = pygame.transform.scale(ghost_image, (GHOST_WIDTH, GHOST_HEIGHT))
 # Load Fireball Image
-fireball_image = pygame.image.load("Assets/Character Sprites/fireball.png")
+fireball_image = pygame.image.load("Assets/Character Sprite/fireball.png")
 
 
 pygame.init()
@@ -119,6 +119,7 @@ while True:
         if fireball_state == "loaded":
             FireballX = player_X
             # Shoot Fireball
+            shot(FireballX, FireballY)
 
 
 # Enemy/Ghost Movement

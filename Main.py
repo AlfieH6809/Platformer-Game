@@ -108,9 +108,9 @@ while True:
     # Boundary for Ghosts
     if GhostX <= 0:
         change_in_x_position_enemy = 0.4
-        GhostY += random.randint(0, 68)
     elif GhostX >= 576:
         change_in_x_position_enemy = -0.4
+
 
 
 

@@ -1,6 +1,6 @@
 # pygame Init + Import
 
-import pygame, sys
+import pygame, sys, random
 
 # Variables - Screen Width/Height, Player Variables
 game_width = 640 #Screen Width
@@ -17,9 +17,12 @@ Player_Speed = 5
 GHOST_WIDTH = 36
 GHOST_HEIGHT = 30
 GHOST_SPEED = 3
+GhostX = 250
+GhostY = 180
+change_in_x_position_enemy = 0.4
 
 
-# Image Assets
+# Load Background Assets
 background_image = pygame.image.load("Assets/Background Images/parallax-mountain-bg.png")
 background_image = pygame.transform.scale(background_image, (BG_Width, BG_Height)) #Adjusting BG Size
 background_image2 = pygame.image.load("Assets/Background Images/parallax-mountain-montain-far.png")
@@ -30,8 +33,10 @@ background_image4 = pygame.image.load("Assets/Background Images/parallax-mountai
 background_image4 = pygame.transform.scale(background_image4, (BG_Width, BG_Height)) #Adjusting BG Size
 background_image5 = pygame.image.load("Assets/Background Images/parallax-mountain-trees.png")
 background_image5 = pygame.transform.scale(background_image5, (BG_Width, BG_Height)) #Adjusting BG Size
+#Load Player Image
 player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
 player_image = pygame.transform.scale(player_image, (player_width, player_height)) # Adjusting Size
+# Load Ghost/Enemy Image
 ghost_image = pygame.image.load("Assets//Enemy Sprites/ghost.png")
 ghost_image = pygame.transform.scale(ghost_image, (GHOST_WIDTH, GHOST_HEIGHT))
 
@@ -55,10 +60,8 @@ class Player(pygame.Rect):
 
 player = Player()
 
-class Ghost(pygame.Rect):
-    def __init(self, x, y):
-        pygame.rect.__init__(self, x, y, GHOST_WIDTH, GHOST_HEIGHT)
-        self.image = ghost_image
+
+
 
 
 
@@ -70,6 +73,7 @@ def draw():
     screen.blit(background_image4, (0, 0))
     screen.blit(background_image5, (0, 0))
     screen.blit(player_image, player)
+    screen.blit(ghost_image, (GhostX, GhostY))
 
 while True:
     for event in pygame.event.get():

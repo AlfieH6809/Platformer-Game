@@ -39,6 +39,8 @@ player_image = pygame.transform.scale(player_image, (player_width, player_height
 # Load Ghost/Enemy Image
 ghost_image = pygame.image.load("Assets//Enemy Sprites/ghost.png")
 ghost_image = pygame.transform.scale(ghost_image, (GHOST_WIDTH, GHOST_HEIGHT))
+# Load Fireball Image
+
 
 
 pygame.init()

@@ -13,7 +13,10 @@ player_width = 42
 player_height = 48
 Player_Speed = 5
 
-
+# Enemy Variables
+GHOST_WIDTH = 36
+GHOST_HEIGHT = 30
+GHOST_SPEED = 3
 
 
 # Image Assets
@@ -29,7 +32,8 @@ background_image5 = pygame.image.load("Assets/Background Images/parallax-mountai
 background_image5 = pygame.transform.scale(background_image5, (BG_Width, BG_Height)) #Adjusting BG Size
 player_image = pygame.image.load("Assets/Character Sprite/Magier.png")
 player_image = pygame.transform.scale(player_image, (player_width, player_height)) # Adjusting Size
-
+ghost_image = pygame.image.load("Assets//Enemy Sprites/ghost.png")
+ghost_image = pygame.transform.scale(ghost_image, (GHOST_WIDTH, GHOST_HEIGHT))
 
 
 pygame.init()
@@ -50,6 +54,11 @@ class Player(pygame.Rect):
 
 
 player = Player()
+
+class Ghost(pygame.Rect):
+    def __init(self, x, y):
+        pygame.rect.__init__(self, x, y, GHOST_WIDTH, GHOST_HEIGHT)
+        self.image = ghost_image
 
 
 

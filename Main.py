@@ -16,9 +16,9 @@ Player_Speed = 5
 # Enemy Variables
 GHOST_WIDTH = 36
 GHOST_HEIGHT = 30
-GHOST_SPEED = 3
-GhostX = 250
-GhostY = 180
+GHOST_SPEED = 5
+GhostX = random.randint(64, 576)
+GhostY = random.randint(64, 296)
 change_in_x_position_enemy = 0.4
 
 
@@ -92,7 +92,7 @@ while True:
     #     if event.key in (pygame.K_LEFT, event.key == pygame.K_a): #Moving Up with Left Arrow or a
     #         player.x -= 5
 
-    keys = pygame.key.get_pressed() # Movement Inputs + Game Screen Boundaries
+    keys = pygame.key.get_pressed() # Player Movement Inputs + Game Screen Boundaries
     if keys[pygame.K_UP or pygame.K_w]:
         player.y = max(player.y - Player_Speed, 0)
     if keys[pygame.K_DOWN or pygame.K_s]:
@@ -101,6 +101,16 @@ while True:
         player.x = min(player.x + Player_Speed, game_width - player_width)
     if keys[pygame.K_LEFT or pygame.K_a]:
         player.x = max(player.x - Player_Speed, 0)
+
+# Enemy/Ghost Movement
+    GhostX += change_in_x_position_enemy
+
+    # Boundary for Ghosts
+    if GhostX <= 0:
+        change_in_x_position_enemy = 0.4
+        GhostY += random.randint(0, 68)
+    elif GhostX >= 576:
+        change_in_x_position_enemy = -0.4
 
 
 
